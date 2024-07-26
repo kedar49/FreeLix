@@ -32,22 +32,19 @@ We have used an open-source model from Hugging Face for transcription and transl
 To start the development server, run:
 ```bash
 npm run dev
+```
 
-
-Contributing
-We welcome contributions! Please read our contributing guidelines for more details.\
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Contact
+## Contributing
+We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) for more details on how to get involved.
+e welcome contributions! Please read our contributing guidelines for more details on how to get involved.
+## License
+This project is licensed under the [MIT License](LICENSE). See the LICENSE file for details.
+his project is licensed under the MIT License. See the LICENSE file for details.
+## Contact
 Feel free to reach out to me on:
-
-
-- [Instagram](https://www.instagram.com/wtfkedar)
-- [Telegram](https://t.me/wtfkedar)
-
+eel free to reach out to me on:
+- [Instagram](https://www.instagram.com/your_instagram_username)
+- [Telegram](https://t.me/your_telegram_username)
+elegram
 For any questions or inquiries, you can also email me at contact@freelix.com.
-
-
-You can copy and paste this code into your `README.md` file. Let me know if you need any further modifications!
+For any questions or inquiries, you can also email me at contact@freelix.com.
