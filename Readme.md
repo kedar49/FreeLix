@@ -43,8 +43,8 @@ his project is licensed under the MIT License. See the LICENSE file for details.
 ## Contact
 Feel free to reach out to me on:
 eel free to reach out to me on:
-- [Instagram](https://www.instagram.com/your_instagram_username)
-- [Telegram](https://t.me/your_telegram_username)
+- [Instagram](https://www.instagram.com/wtfkedar)
+- [Telegram](https://t.me/wtfkedar)
 elegram
 For any questions or inquiries, you can also email me at wtfkedar@gmail.com
 For any questions or inquiries, you can also email me at wtfkedar@gmail.com
