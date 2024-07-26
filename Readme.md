@@ -1,16 +1,34 @@
-#FreeLix
+# FreeLix
 
-This is React & tailwind css web-app for Transcription and translation Backend with LLM models.
+**FreeLix** is a React and Tailwind CSS web application designed for transcription and translation using Large Language Models (LLMs).
 
-I have Used Open Source model from HUggingface for Translation & Translation : openai/whisper-large-v3
+## Features
+- **Transcription:** Converts speech to text using state-of-the-art models.
+- **Translation:** Translates text between different languages with high accuracy.
 
+## Models
+We have used an open-source model from Hugging Face for transcription and translation: **openai/whisper-large-v3**.
 
- # Use a pipeline as a high-level helper
-from transformers import pipeline
+## Getting Started
 
-pipe = pipeline("automatic-speech-recognition", model="openai/whisper-large-v3") 
+### Prerequisites
+- **Node.js:** Ensure that Node.js is installed on your system.
 
+### Installation
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/wtfkedar/FreeLix
+    ```
+2. **Navigate to the project directory:**
+    ```bash
+    cd FreeLix
+    ```
+3. **Install the dependencies:**
+    ```bash
+    npm install
+    ```
 
-to run this 
-
-clone this repo
+### Running the Application
+To start the development server, run:
+```bash
+npm run dev
