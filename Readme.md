@@ -46,5 +46,5 @@ eel free to reach out to me on:
 - [Instagram](https://www.instagram.com/your_instagram_username)
 - [Telegram](https://t.me/your_telegram_username)
 elegram
-For any questions or inquiries, you can also email me at contact@freelix.com.
-For any questions or inquiries, you can also email me at contact@freelix.com.
+For any questions or inquiries, you can also email me at wtfkedar@gmail.com
+For any questions or inquiries, you can also email me at wtfkedar@gmail.com
