@@ -17,7 +17,7 @@ We have used an open-source model from Hugging Face for transcription and transl
 ### Installation
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/wtfkedar/FreeLix
+    git clone https://github.com/kedar49/FreeLix
     ```
 2. **Navigate to the project directory:**
     ```bash
