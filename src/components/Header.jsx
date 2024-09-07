@@ -6,7 +6,7 @@ export default function Header() {
             <a href="/"><h1 className='font-medium'>Free<span className='text-orange-400 bold'>Lix</span></h1></a>
             <div className='gap-4 flex items-center '>
                 <a href="https://github.com/kedar49" target='_blank' className='flex items-center gap-2 specialBtn px-3 py-2 rounded-lg text-orange-400r' rel="noreferrer">Github</a>
-                <a href="https://instagram.com/kedar49" className='flex items-center gap-2 specialBtn px-3 py-2 rounded-lg text-orange-400'>
+                <a href="https://instagram.com/wtfkedar" className='flex items-center gap-2 specialBtn px-3 py-2 rounded-lg text-orange-400'>
                     <p>Contact</p>
                     <i className="fa-solid fa-plus"></i>
                 </a>
