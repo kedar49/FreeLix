@@ -53,7 +53,7 @@ export default function Information(props) {
         const element = document.createElement("a")
         const file = new Blob([textElement], { type: 'text/plain' })
         element.href = URL.createObjectURL(file)
-        element.download = `Freescribe_${new Date().toString()}.txt`
+        element.download = `LanguageBridge_${new Date().toISOString().split('T')[0]}.txt`
         document.body.appendChild(element)
         element.click()
     }
@@ -76,17 +76,34 @@ export default function Information(props) {
 
 
     return (
-        <main className='flex-1  p-4 flex flex-col gap-3 text-center sm:gap-4 justify-center pb-20 max-w-prose w-full mx-auto'>
-            <h1 className='font-semibold text-4xl sm:text-5xl md:text-6xl whitespace-nowrap'>Your <span className='text-orange-400 bold'>Transcription</span></h1>
+        <main className='flex-1 p-4 flex flex-col gap-4 text-center sm:gap-6 justify-center pb-20 max-w-prose w-full mx-auto'>
+            <h1 className='font-bold text-4xl sm:text-5xl md:text-6xl'>
+                Your <span className='bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent'>Results</span>
+            </h1>
 
-            <div className='grid grid-cols-2 sm:mx-auto bg-white  rounded overflow-hidden items-center p-1 orangeShadow border-[2px] border-solid border-orange-300'>
-                <button onClick={() => setTab('transcription')} className={'px-4 rounded duration-200 py-1 ' + (tab === 'transcription' ? ' bg-orange-300 text-white' : ' text-orange-400 hover:text-orange-600')}>Transcription</button>
-                <button onClick={() => setTab('translation')} className={'px-4 rounded duration-200 py-1  ' + (tab === 'translation' ? ' bg-orange-300 text-white' : ' text-orange-400 hover:text-orange-600')}>Translation</button>
+            <div className='grid grid-cols-2 sm:mx-auto bg-white rounded-xl overflow-hidden items-center p-1.5 shadow-lg border-2 border-indigo-200 max-w-md'>
+                <button
+                    onClick={() => setTab('transcription')}
+                    className={'px-6 py-3 rounded-lg font-semibold transition-all duration-200 ' + (tab === 'transcription' ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md' : 'text-slate-600 hover:text-indigo-600')}
+                >
+                    <i className="fa-solid fa-file-lines mr-2"></i>
+                    Transcription
+                </button>
+                <button
+                    onClick={() => setTab('translation')}
+                    className={'px-6 py-3 rounded-lg font-semibold transition-all duration-200 ' + (tab === 'translation' ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md' : 'text-slate-600 hover:text-indigo-600')}
+                >
+                    <i className="fa-solid fa-language mr-2"></i>
+                    Translation
+                </button>
             </div>
-            <div className='my-8 flex flex-col-reverse max-w-prose w-full mx-auto gap-4'>
+
+            <div className='my-6 flex flex-col-reverse max-w-prose w-full mx-auto gap-4'>
                 {(!finished || translating) && (
-                    <div className='grid place-items-center'>
-                        <i className="fa-solid fa-spinner animate-spin"></i>
+                    <div className='grid place-items-center py-8'>
+                        <div className='relative'>
+                            <div className='w-16 h-16 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin'></div>
+                        </div>
                     </div>
                 )}
                 {tab === 'transcription' ? (
@@ -95,12 +112,23 @@ export default function Information(props) {
                     <Translation {...props} toLanguage={toLanguage} translating={translating} textElement={textElement} setTranslating={setTranslating} setTranslation={setTranslation} setToLanguage={setToLanguage} generateTranslation={generateTranslation} />
                 )}
             </div>
-            <div className='flex items-center gap-4 mx-auto '>
-                <button onClick={handleCopy} title="Copy" className='bg-white  hover:text-orange-500 duration-200 text-orange-300 px-2 aspect-square grid place-items-center rounded'>
+
+            <div className='flex items-center gap-3 mx-auto'>
+                <button
+                    onClick={handleCopy}
+                    title="Copy to clipboard"
+                    className='bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-4 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2 font-semibold border-2 border-indigo-200 hover:border-indigo-300'
+                >
                     <i className="fa-solid fa-copy"></i>
+                    <span className='hidden sm:inline'>Copy</span>
                 </button>
-                <button onClick={handleDownload} title="Download" className='bg-white  hover:text-orange-500 duration-200 text-orange-300 px-2 aspect-square grid place-items-center rounded'>
+                <button
+                    onClick={handleDownload}
+                    title="Download as text file"
+                    className='bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-4 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2 font-semibold'
+                >
                     <i className="fa-solid fa-download"></i>
+                    <span className='hidden sm:inline'>Download</span>
                 </button>
             </div>
         </main>

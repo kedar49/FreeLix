@@ -13,22 +13,19 @@ h3,
   font-family: 'Poppins', sans-serif;
 }
 
-.blueShadow {
-  box-shadow: 3px 3px 0 0 #93c5fd;
-}
-
 .specialBtn {
   background: white;
-  box-shadow: 0px 14px 55px rgba(240, 153, 71, 0.761);
-  transition-duration: 200ms;
+  box-shadow: 0px 10px 40px rgba(99, 102, 241, 0.3);
+  transition: all 200ms ease-in-out;
 }
 
 .specialBtn:hover {
-  opacity: 0.8;
+  box-shadow: 0px 15px 50px rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
 }
 
 .loading {
-  animation: width 5s linear infinite;
+  animation: width 5s ease-in-out infinite;
   margin-right: auto;
 }
 
@@ -41,17 +38,86 @@ h3,
 }
 
 @keyframes width {
-  0%{width: 100%;}
-  10%{width: 73%;}
-  20%{width: 35%;}
-  30%{width: 37%;}
-  40%{width: 48%;}
-  50%{width: 65%;}
-  60%{width: 46%;}
-  70%{width: 38%;}
-  80%{width: 66%;}
-  90%{width: 76%;}
-  100%{width: 100%;}
+  0% {
+    width: 100%;
+  }
+
+  10% {
+    width: 73%;
+  }
+
+  20% {
+    width: 35%;
+  }
+
+  30% {
+    width: 37%;
+  }
+
+  40% {
+    width: 48%;
+  }
+
+  50% {
+    width: 65%;
+  }
+
+  60% {
+    width: 46%;
+  }
+
+  70% {
+    width: 38%;
+  }
+
+  80% {
+    width: 66%;
+  }
+
+  90% {
+    width: 76%;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #4f46e5, #9333ea);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #4338ca, #7e22ce);
+}

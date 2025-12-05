@@ -1,27 +1,36 @@
-# FreeLix
+# Language Bridge
 
-**FreeLix** is a React and Tailwind CSS web application designed for transcription and translation using Large Language Models (LLMs).
+**Language Bridge** is a modern React and Tailwind CSS web application designed for seamless transcription and translation using state-of-the-art AI models.
 
 ## Features
-- **Transcription:** Converts speech to text using state-of-the-art models.
-- **Translation:** Translates text between different languages with high accuracy.
+- **Audio Transcription:** Converts speech to text using advanced Whisper models
+- **Multi-language Translation:** Translates text between 200+ languages with high accuracy
+- **Real-time Recording:** Record audio directly in your browser
+- **File Upload:** Support for MP3 and WAV audio files
+- **Modern UI:** Beautiful, responsive design with smooth animations
 
-## Models
-We have used an open-source model from Hugging Face for transcription and translation: **openai/whisper-large-v3**.
+## AI Models
+We use **fast and accurate** open-source models optimized for browser performance:
+- **Transcription:** Whisper Small (OpenAI) - 99+ languages, excellent accuracy, ~244 MB
+- **Translation:** NLLB-200-600M (Meta) - 200+ languages, professional quality, ~600 MB
+
+All models run entirely in your browser for complete privacy. See [MODELS.md](MODELS.md) for detailed information.
+
+**Performance**: First use downloads ~850 MB of models (cached permanently). Works great on 4+ GB RAM.
 
 ## Getting Started
 
 ### Prerequisites
-- **Node.js:** Ensure that Node.js is installed on your system.
+- **Node.js:** Ensure that Node.js is installed on your system
 
 ### Installation
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/kedar49/FreeLix
+    git clone https://github.com/Avi2894/language-bridge
     ```
 2. **Navigate to the project directory:**
     ```bash
-    cd FreeLix
+    cd language-bridge
     ```
 3. **Install the dependencies:**
     ```bash
@@ -34,17 +43,28 @@ To start the development server, run:
 npm run dev
 ```
 
+### Building for Production
+To create a production build:
+```bash
+npm run build
+```
+
+The build output will be in the `dist` folder.
+
+## Deployment
+
+### Quick Deploy to Vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Avi2894/language-bridge)
+
+Or follow the detailed [Deployment Guide](DEPLOYMENT.md) for step-by-step instructions.
+
 ## Contributing
-We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) for more details on how to get involved.
-e welcome contributions! Please read our contributing guidelines for more details on how to get involved.
+We welcome contributions! Feel free to submit issues and pull requests.
+
 ## License
 This project is licensed under the [MIT License](LICENSE). See the LICENSE file for details.
-his project is licensed under the MIT License. See the LICENSE file for details.
-## Contact
-Feel free to reach out to me on:
-eel free to reach out to me on:
-- [Instagram](https://www.instagram.com/wtfkedar)
-- [Telegram](https://t.me/wtfkedar)
 
-For any questions or inquiries, you can also email me at wtfkedar@gmail.com
-For any questions or inquiries, you can also email me at wtfkedar@gmail.com
+## Contact
+Built with ❤️ by Avinash Ghodke
+
+For questions or inquiries, reach out via GitHub: [@Avi2894](https://github.com/Avi2894)

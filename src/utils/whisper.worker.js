@@ -3,12 +3,12 @@ import { MessageTypes } from './presets'
 
 class MyTranscriptionPipeline {
     static task = 'automatic-speech-recognition'
-    static model = 'openai/whisper-large-v3' // Update the model name
+    static model = 'Xenova/whisper-small' // Fast & accurate - 244MB, 99+ languages, best balance
     static instance = null
 
     static async getInstance(progress_callback = null) {
         if (this.instance === null) {
-            this.instance = await pipeline(this.task, null, { progress_callback })
+            this.instance = await pipeline(this.task, this.model, { progress_callback })
         }
 
         return this.instance
@@ -44,6 +44,8 @@ async function transcribe(audio) {
         chunk_length: 30,
         stride_length_s,
         return_timestamps: true,
+        language: 'english', // Set default language for faster processing (remove for auto-detect)
+        task: 'transcribe',
         callback_function: generationTracker.callbackFunction.bind(generationTracker),
         chunk_callback: generationTracker.chunkCallback.bind(generationTracker)
     })
