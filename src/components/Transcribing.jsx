@@ -20,11 +20,13 @@ export default function Transcribing(props) {
                 </h1>
                 <div className='flex flex-col gap-2'>
                     <p className='text-lg text-slate-600 font-medium'>
-                        Processing your audio with Whisper Large V3...
+                        {!downloading ? 'Loading AI model...' : 'Processing your audio...'}
                     </p>
-                    <p className='text-sm text-indigo-600 font-semibold animate-pulse'>
-                        Using Hugging Face API - No downloads needed!
-                    </p>
+                    {downloading && progress > 0 && (
+                        <p className='text-sm text-indigo-600 font-semibold'>
+                            Downloading: {progress}%
+                        </p>
+                    )}
                 </div>
             </div>
 
@@ -51,8 +53,8 @@ export default function Transcribing(props) {
                 <div className='flex items-start gap-3 text-left'>
                     <i className="fa-solid fa-bolt text-indigo-600 mt-1"></i>
                     <div className='text-sm text-slate-600'>
-                        <p className='font-semibold text-slate-700 mb-1'>⚡ Whisper Large V3 via API</p>
-                        <p>State-of-the-art accuracy with instant processing. No model downloads required!</p>
+                        <p className='font-semibold text-slate-700 mb-1'>⚡ Whisper Large V3 via Groq</p>
+                        <p>Lightning-fast transcription with state-of-the-art accuracy. No downloads required!</p>
                     </div>
                 </div>
             </div>

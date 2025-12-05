@@ -13,28 +13,75 @@
 - **File Upload:** Support for MP3 and WAV audio files
 - **Modern UI:** Beautiful, responsive design with smooth animations
 
-## AI Models (via Hugging Face API)
-We use **state-of-the-art** models via Hugging Face Inference API for instant results:
-- **Transcription:** Whisper Large V3 (OpenAI) - 99+ languages, best accuracy
-- **Translation:** NLLB-200-600M (Meta) - 200+ languages, professional quality
+## AI Models
+
+**Transcription:** Whisper Large V3 Turbo (OpenAI) via Groq API  
+**Translation:** Llama 3.1 8B Instant (Meta) via Groq API
 
 **Benefits:**
-- ⚡ **Instant processing** - No model downloads required
-- 🎯 **Best accuracy** - Uses largest Whisper model
-- 💻 **Works on any device** - No RAM requirements
-- 🆓 **Free tier available** - Get your API key from [Hugging Face](https://huggingface.co/settings/tokens)
+- ⚡ **Instant processing** - No model downloads, works immediately
+- 🎯 **Best accuracy** - State-of-the-art models for both tasks
+- 🆓 **Free tier** - Generous Groq API limits (30 req/min)
+- 🚀 **Lightning fast** - Groq is optimized for speed
+- 🔒 **One API key** - Same key for transcription and translation
 
-## Setup
+## How It Works
 
-1. Get your free API key from [Hugging Face Settings](https://huggingface.co/settings/tokens)
-2. Click "Set API Key" in the app header
-3. Paste your key and save
-4. Start transcribing and translating instantly!
+**Transcription:**
+1. Audio is processed in your browser
+2. Sent to Groq API using your key
+3. Whisper Large V3 Turbo transcribes
+4. Results in 2-5 seconds
 
-## Getting Started
+**Translation:**
+1. Transcribed text sent to Groq API
+2. Llama 3.1 8B Instant translates
+3. Supports 50+ languages
+4. Results in 1-3 seconds
+
+**Privacy**: Your API key is stored locally in your browser only.
+
+## Quick Start
+
+1. **Get Free Groq API Key** (No credit card required!)
+   - Visit [console.groq.com/keys](https://console.groq.com/keys)
+   - Sign up and create an API key
+   - Copy the key (starts with `gsk_...`)
+
+2. **Use the App**
+   - Open LanguageBridge
+   - Click "Set API Key" button
+   - Paste your Groq API key
+   - Start transcribing instantly!
+
+## Deploy
+
+Deploy to any static hosting service:
+
+**Vercel:**
+```bash
+npm run build
+vercel --prod
+```
+
+**Netlify:**
+```bash
+npm run build
+netlify deploy --prod --dir=dist
+```
+
+**GitHub Pages / Cloudflare Pages:**
+- Just push to your repo
+- Configure build command: `npm run build`
+- Configure output directory: `dist`
+
+No environment variables or backend needed!
+
+## Local Development
 
 ### Prerequisites
-- **Node.js:** Ensure that Node.js is installed on your system
+- **Node.js** (v16 or higher)
+- **Groq API Key** (free from [console.groq.com](https://console.groq.com))
 
 ### Installation
 1. **Clone the repository:**
@@ -45,16 +92,18 @@ We use **state-of-the-art** models via Hugging Face Inference API for instant re
     ```bash
     cd language-bridge
     ```
-3. **Install the dependencies:**
+3. **Install dependencies:**
     ```bash
     npm install
     ```
-
-### Running the Application
-To start the development server, run:
-```bash
-npm run dev
-```
+4. **Start development server:**
+    ```bash
+    npm run dev
+    ```
+5. **Open browser:**
+    - Visit `http://localhost:5173`
+    - Click "Set API Key" and enter your Groq API key
+    - Start transcribing!
 
 ### Building for Production
 To create a production build:

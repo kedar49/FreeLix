@@ -18,8 +18,8 @@ export default function Header({ apiKey, onApiKeyClick }) {
                 <button
                     onClick={onApiKeyClick}
                     className={`flex items-center gap-2 px-3 md:px-4 py-2 rounded-full font-medium transition-all duration-200 shadow-md hover:shadow-lg ${apiKey
-                            ? 'bg-green-50 text-green-700 border-2 border-green-200 hover:bg-green-100'
-                            : 'bg-orange-50 text-orange-700 border-2 border-orange-200 hover:bg-orange-100'
+                        ? 'bg-green-50 text-green-700 border-2 border-green-200 hover:bg-green-100'
+                        : 'bg-orange-50 text-orange-700 border-2 border-orange-200 hover:bg-orange-100 animate-pulse'
                         }`}
                     title={apiKey ? 'API Key Configured' : 'Set API Key'}
                 >

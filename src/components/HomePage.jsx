@@ -154,7 +154,7 @@ export default function HomePage(props) {
                     <i className="fa-solid fa-bolt text-indigo-600 mt-1"></i>
                     <div className='text-xs text-slate-600'>
                         <p className='font-semibold text-slate-700 mb-1'>⚡ Instant Processing</p>
-                        <p>Uses Hugging Face API with Whisper Large V3. No downloads, instant results! Get your free API key to start.</p>
+                        <p>Powered by Groq API with Whisper Large V3. No downloads, instant results, best accuracy!</p>
                     </div>
                 </div>
             </div>

@@ -14,22 +14,38 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [finished, setFinished] = useState(false)
   const [loadingProgress, setLoadingProgress] = useState(0)
-  const [apiKey, setApiKey] = useState(localStorage.getItem('hf_api_key') || '')
-  const [showApiKeyInput, setShowApiKeyInput] = useState(!localStorage.getItem('hf_api_key'))
+  const [apiKey, setApiKey] = useState(localStorage.getItem('groq_api_key') || '')
+  const [showApiKeyInput, setShowApiKeyInput] = useState(!localStorage.getItem('groq_api_key'))
 
   const isAudioAvailable = file || audioStream
+
+  // Show setup instructions on first load
+  useEffect(() => {
+    if (!apiKey) {
+      console.log('%c🔑 Setup Required!', 'font-size: 20px; color: #ff6b35; font-weight: bold;')
+      console.log('%c1. Click "Set API Key" button (orange, pulsing)', 'font-size: 14px; color: #4f46e5;')
+      console.log('%c2. Get FREE key: https://console.groq.com/keys', 'font-size: 14px; color: #4f46e5;')
+      console.log('%c3. Paste and save - Done!', 'font-size: 14px; color: #4f46e5;')
+    } else {
+      console.log('%c✅ API Key Configured!', 'font-size: 16px; color: #10b981; font-weight: bold;')
+    }
+  }, [])
 
   function handleAudioReset() {
     setFile(null)
     setAudioStream(null)
+    setOutput(null)
+    setLoading(false)
+    setDownloading(false)
+    setFinished(false)
   }
 
   const worker = useRef(null)
 
   useEffect(() => {
     if (!worker.current) {
-      // Use API worker for fast inference
-      worker.current = new Worker(new URL('./utils/whisper-api.worker.js', import.meta.url), {
+      // Use Groq API worker (fast, no downloads)
+      worker.current = new Worker(new URL('./utils/whisper-groq.worker.js', import.meta.url), {
         type: 'module'
       })
     }
@@ -56,9 +72,11 @@ function App() {
           console.log("DONE")
           break;
         case 'ERROR':
+          console.error('Worker error:', e.data.error)
           alert('Error: ' + e.data.error)
           setLoading(false)
           setDownloading(false)
+          setFinished(false)
           break;
       }
     }
@@ -69,7 +87,7 @@ function App() {
   })
 
   function saveApiKey(key) {
-    localStorage.setItem('hf_api_key', key)
+    localStorage.setItem('groq_api_key', key)
     setApiKey(key)
     setShowApiKeyInput(false)
   }
@@ -88,17 +106,25 @@ function App() {
 
     if (!apiKey) {
       setShowApiKeyInput(true)
-      alert('Please enter your Hugging Face API key first')
+      alert('⚠️ Please set your Groq API key first!\n\n1. Click the "Set API Key" button (orange)\n2. Get free key from console.groq.com/keys\n3. Paste and save')
       return
     }
 
-    let audio = await readAudioFrom(file ? file : audioStream)
+    try {
+      console.log('Reading audio...')
+      let audio = await readAudioFrom(file ? file : audioStream)
+      console.log('Audio read successfully, length:', audio.length)
 
-    worker.current.postMessage({
-      type: MessageTypes.INFERENCE_REQUEST,
-      audio,
-      apiKey
-    })
+      worker.current.postMessage({
+        type: MessageTypes.INFERENCE_REQUEST,
+        audio,
+        apiKey
+      })
+      console.log('Message sent to worker')
+    } catch (error) {
+      console.error('Error in handleFormSubmission:', error)
+      alert('Failed to process audio: ' + error.message)
+    }
   }
 
   return (
@@ -107,21 +133,21 @@ function App() {
         <Header apiKey={apiKey} onApiKeyClick={() => setShowApiKeyInput(!showApiKeyInput)} />
 
         {showApiKeyInput && (
-          <div className='p-4 bg-indigo-50 border-b border-indigo-200'>
+          <div className='p-4 bg-gradient-to-r from-indigo-50 to-purple-50 border-b border-indigo-200'>
             <div className='max-w-2xl mx-auto'>
               <h3 className='font-semibold text-slate-700 mb-2 flex items-center gap-2'>
                 <i className="fa-solid fa-key text-indigo-600"></i>
-                Hugging Face API Key
+                Groq API Key (Free)
               </h3>
               <p className='text-sm text-slate-600 mb-3'>
-                Get your free API key from <a href="https://huggingface.co/settings/tokens" target="_blank" rel="noreferrer" className='text-indigo-600 hover:underline font-medium'>Hugging Face Settings</a>
+                Get your free API key from <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer" className='text-indigo-600 hover:underline font-medium'>Groq Console</a> - No credit card required!
               </p>
               <div className='flex gap-2'>
                 <input
                   type="password"
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="hf_..."
+                  placeholder="gsk_..."
                   className='flex-1 px-4 py-2 rounded-lg border-2 border-indigo-200 focus:border-indigo-400 outline-none'
                 />
                 <button
@@ -165,6 +191,9 @@ function App() {
             >
               Avinash Ghodke
             </a>
+          </p>
+          <p className='text-xs text-slate-500'>
+            Powered by Groq API • Whisper Large V3 Turbo & Llama 3.1 8B Instant
           </p>
         </div>
       </footer>

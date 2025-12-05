@@ -14,8 +14,8 @@ export default function Information(props) {
 
     useEffect(() => {
         if (!worker.current) {
-            // Use API worker for fast translation
-            worker.current = new Worker(new URL('../utils/translate-api.worker.js', import.meta.url), {
+            // Use Groq Llama 3.1 8B Instant for translation
+            worker.current = new Worker(new URL('../utils/translate-groq.worker.js', import.meta.url), {
                 type: 'module'
             })
         }
@@ -65,7 +65,7 @@ export default function Information(props) {
         }
 
         if (!apiKey) {
-            alert('Please set your Hugging Face API key first')
+            alert('Please set your Groq API key first')
             return
         }
 
