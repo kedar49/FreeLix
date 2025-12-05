@@ -1,6 +1,10 @@
-# Language Bridge
+# LanguageBridge 🌉
 
-**Language Bridge** is a modern React and Tailwind CSS web application designed for seamless transcription and translation using state-of-the-art AI models.
+**LanguageBridge** is a modern React and Tailwind CSS web application designed for seamless transcription and translation using state-of-the-art AI models.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Avi2894/language-bridge)
+
+> 🚀 **[Quick Start Guide](QUICKSTART.md)** - Deploy in 5 minutes!
 
 ## Features
 - **Audio Transcription:** Converts speech to text using advanced Whisper models
@@ -9,14 +13,23 @@
 - **File Upload:** Support for MP3 and WAV audio files
 - **Modern UI:** Beautiful, responsive design with smooth animations
 
-## AI Models
-We use **fast and accurate** open-source models optimized for browser performance:
-- **Transcription:** Whisper Small (OpenAI) - 99+ languages, excellent accuracy, ~244 MB
-- **Translation:** NLLB-200-600M (Meta) - 200+ languages, professional quality, ~600 MB
+## AI Models (via Hugging Face API)
+We use **state-of-the-art** models via Hugging Face Inference API for instant results:
+- **Transcription:** Whisper Large V3 (OpenAI) - 99+ languages, best accuracy
+- **Translation:** NLLB-200-600M (Meta) - 200+ languages, professional quality
 
-All models run entirely in your browser for complete privacy. See [MODELS.md](MODELS.md) for detailed information.
+**Benefits:**
+- ⚡ **Instant processing** - No model downloads required
+- 🎯 **Best accuracy** - Uses largest Whisper model
+- 💻 **Works on any device** - No RAM requirements
+- 🆓 **Free tier available** - Get your API key from [Hugging Face](https://huggingface.co/settings/tokens)
 
-**Performance**: First use downloads ~850 MB of models (cached permanently). Works great on 4+ GB RAM.
+## Setup
+
+1. Get your free API key from [Hugging Face Settings](https://huggingface.co/settings/tokens)
+2. Click "Set API Key" in the app header
+3. Paste your key and save
+4. Start transcribing and translating instantly!
 
 ## Getting Started
 

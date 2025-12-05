@@ -3,7 +3,7 @@ import Transcription from './Transcription'
 import Translation from './Translation'
 
 export default function Information(props) {
-    const { output, finished } = props
+    const { output, finished, apiKey } = props
     const [tab, setTab] = useState('transcription')
     const [translation, setTranslation] = useState(null)
     const [toLanguage, setToLanguage] = useState('Select language')
@@ -14,7 +14,8 @@ export default function Information(props) {
 
     useEffect(() => {
         if (!worker.current) {
-            worker.current = new Worker(new URL('../utils/translate.worker.js', import.meta.url), {
+            // Use API worker for fast translation
+            worker.current = new Worker(new URL('../utils/translate-api.worker.js', import.meta.url), {
                 type: 'module'
             })
         }
@@ -63,12 +64,18 @@ export default function Information(props) {
             return
         }
 
+        if (!apiKey) {
+            alert('Please set your Hugging Face API key first')
+            return
+        }
+
         setTranslating(true)
 
         worker.current.postMessage({
             text: output.map(val => val.text),
             src_lang: 'eng_Latn',
-            tgt_lang: toLanguage
+            tgt_lang: toLanguage,
+            apiKey: apiKey
         })
     }
 

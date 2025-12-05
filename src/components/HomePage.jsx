@@ -153,8 +153,8 @@ export default function HomePage(props) {
                 <div className='flex items-start gap-3 text-left'>
                     <i className="fa-solid fa-bolt text-indigo-600 mt-1"></i>
                     <div className='text-xs text-slate-600'>
-                        <p className='font-semibold text-slate-700 mb-1'>⚡ Fast Performance</p>
-                        <p>First use downloads models (~850 MB). After that, everything runs instantly from cache!</p>
+                        <p className='font-semibold text-slate-700 mb-1'>⚡ Instant Processing</p>
+                        <p>Uses Hugging Face API with Whisper Large V3. No downloads, instant results! Get your free API key to start.</p>
                     </div>
                 </div>
             </div>

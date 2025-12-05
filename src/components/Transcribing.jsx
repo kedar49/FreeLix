@@ -20,13 +20,11 @@ export default function Transcribing(props) {
                 </h1>
                 <div className='flex flex-col gap-2'>
                     <p className='text-lg text-slate-600 font-medium'>
-                        {!downloading ? 'Initializing Whisper AI model...' : 'Processing your audio with AI...'}
+                        Processing your audio with Whisper Large V3...
                     </p>
-                    {downloading && progress > 0 && (
-                        <p className='text-sm text-indigo-600 font-semibold'>
-                            Loading model: {progress}%
-                        </p>
-                    )}
+                    <p className='text-sm text-indigo-600 font-semibold animate-pulse'>
+                        Using Hugging Face API - No downloads needed!
+                    </p>
                 </div>
             </div>
 
@@ -51,10 +49,10 @@ export default function Transcribing(props) {
 
             <div className='bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-indigo-100 max-w-md'>
                 <div className='flex items-start gap-3 text-left'>
-                    <i className="fa-solid fa-circle-info text-indigo-600 mt-1"></i>
+                    <i className="fa-solid fa-bolt text-indigo-600 mt-1"></i>
                     <div className='text-sm text-slate-600'>
-                        <p className='font-semibold text-slate-700 mb-1'>Using Whisper Small Model</p>
-                        <p>Fast, accurate speech recognition for 99+ languages. Perfect balance of speed and quality.</p>
+                        <p className='font-semibold text-slate-700 mb-1'>⚡ Whisper Large V3 via API</p>
+                        <p>State-of-the-art accuracy with instant processing. No model downloads required!</p>
                     </div>
                 </div>
             </div>
